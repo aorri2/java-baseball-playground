@@ -33,5 +33,14 @@ public class StringTest {
         assertThat(actual).isEqualTo("1,2");
     }
 
+    @Test
+    @DisplayName("'abc'를 charAt 했을 때 특정 위치 문자를 가져온다.")
+    void givenString_whenCharAt_thenReturnSpecificPositionCharacter() {
+        int position = 1;
+        char actual = "abc".charAt(position);
+
+        assertThat(actual).isEqualTo('b');
+    }
+
 
 }
