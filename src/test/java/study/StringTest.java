@@ -42,5 +42,11 @@ public class StringTest {
         assertThat(actual).isEqualTo('b');
     }
 
+    @Test
+    @DisplayName("문자열의 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생한다.")
+    void givenString_whenSubstringOutOfBound_thenThrowsStringIndexOutOfBoundsException() {
+        assertThatThrownBy(() -> "abc".charAt(100)).isInstanceOf(StringIndexOutOfBoundsException.class);
+    }
+
 
 }
