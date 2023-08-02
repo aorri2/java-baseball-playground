@@ -21,17 +21,23 @@ public class StringCalculator {
 	}
 
 	private void calculatePartial(String input) {
-		String regulaExpression = "\\d";
+		String regulaExpression = "^[0-9]*$";
 
 		if (Pattern.matches(regulaExpression,input)) {
 			result = currentOperator.operate(result, Integer.parseInt(input));
 			return;
 		}
 
-		Arrays.stream(Operator.values())
-			.filter(operator -> operator.getSymbol().equals(input))
-			.forEach(operator -> currentOperator = operator);
+		for(Operator operator : Operator.values()){
+			if(operator.getSymbol().equals(input)){
+				currentOperator = operator;
+				return;
+			}
+		}
 
-		throw new IllegalArgumentException();
+		currentOperator = Arrays.stream(Operator.values())
+			.filter(operator -> operator.getSymbol().equals(input))
+			.findFirst()
+			.orElseThrow(IllegalArgumentException::new);
 	}
 }

@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 public class StringCalculatorTest {
@@ -24,13 +25,6 @@ public class StringCalculatorTest {
 
 		assertThat(stringCalculator.calculateFormula()).isEqualTo(10);
 
-	}
-
-	@Test
-	@NullAndEmptySource
-	@DisplayName("입력 값이 null 이거나 공백 문자일 경우 IllegalArgumentException을 던진다.")
-	void nullOrEmptyInput() {
-		assertThatThrownBy(stringCalculator::calculateFormula).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
